@@ -19,7 +19,27 @@ spec:
     spec:
       containers:
         - name: application-simple-gitops
-          image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops
+          image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: RUN_TYPE
+              value: cpu
+            - name: CPU_PERCENT
+              value: "95"
+          resources:
+            limits:
+              cpu: 11m
+              memory: 28Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+        - name: application-simple-gitops
+          image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops:latest
           ports:
             - containerPort: 8080
               protocol: TCP
