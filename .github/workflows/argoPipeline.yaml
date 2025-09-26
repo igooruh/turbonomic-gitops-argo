@@ -31,7 +31,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
-          cd k8s
+          cd gitops-multifile
           kustomize edit set image nodeserver=$DOCKER_USERNAME/ocp-turbonomic-gitops-argo:$GITHUB_SHA
 
       - name: Commit
