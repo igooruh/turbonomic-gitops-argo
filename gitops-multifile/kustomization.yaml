@@ -9,4 +9,4 @@ resources:
 images:
 - name: nodeserver
   newName: igooruh/ocp-turbonomic-gitops-argo
-  newTag: af37571912f0dd89cbff8d66ae50764937c6840f
+  newTag: 362eb8128b5473bc8a433d9021387f9279b5cf47
