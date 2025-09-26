@@ -3,9 +3,6 @@ kind: Application
 metadata:
   name: bb-gitops-turbonomic
   namespace: openshift-gitops
-  labels:
-    app: application-pipeline-devops-warning
-    app.kubernetes.io/instance: bb-gitops-pipeline-devops
 spec:
   destination:
     namespace: argocd-test
