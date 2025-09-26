@@ -18,7 +18,7 @@ spec:
         app.kubernetes.io/instance: bb-gitops-pipeline-devops
     spec:
       containers:
-        - name: application-simple-gitops
+        - name: application-simple-gitops-reconciler
           image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops
           ports:
             - containerPort: 8080
