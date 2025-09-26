@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     app: application-simple-gitops
+    app.kubernetes.io/instance: bb-gitops-pipeline-devops
   ports:
     - port: 8080
       targetPort: 8080
