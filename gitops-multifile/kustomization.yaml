@@ -3,9 +3,10 @@ kind: Kustomization
 
 resources:
 - deployment.yaml
+- deployment-reconciler.yaml
 - service.yaml
 
 images:
 - name: nodeserver
-  newName: /gitops
+  newName: /turbonomic-gitops-argo
   newTag: c23756ee8f18b328afadcdbf62eb74fbe6b99138
