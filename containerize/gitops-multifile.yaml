@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bb-gitops-turbonomic
+  namespace: openshift-gitops
+  labels:
+    app: application-pipeline-devops-warning
+    app.kubernetes.io/instance: bb-gitops-pipeline-devops
+spec:
+  destination:
+    namespace: argocd-test
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: gitops-multifile
+    repoURL: https://github.com/igooruh/turbonomic-gitops-argo
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - PruneLast=true
+      - RespectIgnoreDifferences=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

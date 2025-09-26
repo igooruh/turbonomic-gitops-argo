@@ -1,0 +1,54 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: application-simple-gitops-reconciler
+  labels:
+    app: application-simple-gitops
+    app.kubernetes.io/instance: bb-gitops-pipeline-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: application-simple-gitops
+      app.kubernetes.io/instance: bb-gitops-pipeline-devops
+  template:
+    metadata:
+      labels:
+        app: application-simple-gitops
+        app.kubernetes.io/instance: bb-gitops-pipeline-devops
+    spec:
+      containers:
+        - name: application-simple-gitops
+          image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: RUN_TYPE
+              value: cpu
+            - name: CPU_PERCENT
+              value: '95'
+          resources:
+            limits:
+              cpu: 11m
+              memory: 28Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: deployer-dockercfg-vk7js
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
