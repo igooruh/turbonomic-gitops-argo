@@ -30,11 +30,11 @@ spec:
               value: "95"
           resources:
             limits:
-              cpu: 80m
-              memory: 80Mi
+              cpu: 11m
+              memory: 28Mi
             requests:
-              cpu: 2m
-              memory: 2Mi
+              cpu: 10m
+              memory: 10Mi
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
