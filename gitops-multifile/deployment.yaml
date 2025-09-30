@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: application-simple-gitops
-          image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops:latest
+          image: default-route-openshift-image-registry.apps.itz-7gjp4z.infra01-lb.dal14.techzone.ibm.com/openshift-image-registry/application-gitops
           ports:
             - containerPort: 8080
               protocol: TCP
